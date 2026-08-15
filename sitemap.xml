@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- If a custom domain is attached, replace the goodstuffstudio.github.io/goodstuffstudio
-     prefix throughout this file (and the Sitemap line in robots.txt). -->
+<!-- Update these if the Netlify subdomain differs, or once a custom domain is
+     attached. The Sitemap: line in robots.txt has to match. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://goodstuffstudio.github.io/goodstuffstudio/</loc>
+    <loc>https://goodstuff.netlify.app/</loc>
     <lastmod>2026-08-15</lastmod>
   </url>
   <url>
-    <loc>https://goodstuffstudio.github.io/goodstuffstudio/support/</loc>
+    <loc>https://goodstuff.netlify.app/support/</loc>
     <lastmod>2026-08-15</lastmod>
   </url>
   <url>
-    <loc>https://goodstuffstudio.github.io/goodstuffstudio/privacy/</loc>
+    <loc>https://goodstuff.netlify.app/privacy/</loc>
     <lastmod>2026-08-15</lastmod>
   </url>
   <url>
-    <loc>https://goodstuffstudio.github.io/goodstuffstudio/privacy/lilt/</loc>
+    <loc>https://goodstuff.netlify.app/privacy/lilt/</loc>
     <lastmod>2026-08-15</lastmod>
   </url>
 </urlset>

@@ -5,25 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Page not found — Goodstuff Studio</title>
     <!--
-      Every other page uses relative paths, so it does not matter what the site
-      is served from. This one is different: GitHub Pages serves 404.html for
-      ANY missing path at ANY depth, so relative URLs would resolve against
-      whatever the visitor typed. These must be absolute.
-
-      The prefix below assumes a GitHub Pages project site at
-      goodstuffstudio.github.io/goodstuffstudio/. If you attach a custom domain
-      (which serves from the root), change the four /goodstuffstudio/ prefixes
-      in this file to /.
+      Netlify serves this file for any path that does not match a file, at any
+      depth, so every URL here has to be root-absolute. Relative paths would
+      resolve against whatever the visitor typed.
     -->
-    <link rel="stylesheet" href="/goodstuffstudio/assets/styles.css" />
+    <link rel="stylesheet" href="/assets/styles.css" />
   </head>
   <body>
     <header class="site-header">
       <div class="wrap">
-        <a class="wordmark" href="/goodstuffstudio/">Goodstuff&nbsp;Studio</a>
+        <a class="wordmark" href="/">Goodstuff&nbsp;Studio</a>
         <nav class="site-nav" aria-label="Primary">
-          <a href="/goodstuffstudio/support/">Support</a>
-          <a href="/goodstuffstudio/privacy/">Privacy</a>
+          <a href="/support/">Support</a>
+          <a href="/privacy/">Privacy</a>
         </nav>
       </div>
     </header>
@@ -36,13 +30,13 @@
         </p>
         <ul class="card-list">
           <li>
-            <a class="card" href="/goodstuffstudio/support/">
+            <a class="card" href="/support/">
               <strong>Support</strong>
               <span>Get help with a Goodstuff Studio app</span>
             </a>
           </li>
           <li>
-            <a class="card" href="/goodstuffstudio/privacy/">
+            <a class="card" href="/privacy/">
               <strong>Privacy</strong>
               <span>How we handle your data</span>
             </a>

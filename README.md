@@ -1,7 +1,7 @@
 # goodstuffstudio
 
 The site for **Goodstuff Studio**. Plain static HTML — no build step, no
-dependencies, no framework. Served by GitHub Pages from `main` at the repo root.
+dependencies, no framework. Hosted on Netlify, served from the repo root.
 
 ## Pages
 
@@ -11,33 +11,34 @@ dependencies, no framework. Served by GitHub Pages from `main` at the repo root.
 | `/privacy`      | `privacy/index.html`      |
 | `/privacy/lilt` | `privacy/lilt/index.html` |
 | `/support`      | `support/index.html`      |
-| 404             | `404.html`                |
+| not found       | `404.html`                |
 
-Shared styles live in `assets/styles.css`. `.nojekyll` tells Pages to serve
-files as-is instead of running them through Jekyll.
+Shared styles live in `assets/styles.css`. All links are root-absolute
+(`/privacy/lilt/`), which is what makes them correct whether Netlify serves a
+URL with or without its trailing slash.
 
-## Where this is served from
+## Deploying
 
-The repo is named `goodstuffstudio`, not `goodstuffstudio.github.io`, so
-GitHub Pages treats it as a **project site** and serves it under a path
-prefix:
+`netlify.toml` sets `publish = "."` and no build command, so connecting the
+repo in Netlify is the whole setup — every push to `main` deploys. Netlify
+serves `404.html` for unmatched paths on its own; no redirect rule needed.
 
-```
-https://goodstuffstudio.github.io/goodstuffstudio/privacy/lilt/
-```
+The file also sets security headers, including a Content-Security-Policy of
+`default-src 'none'` with `style-src 'self'`. The pages currently load nothing
+but their own stylesheet, so that is accurate — **if you ever add a script, a
+web font, or an image from another origin, the CSP will block it** until you
+widen it.
 
-All four content pages use **relative** links, so they work correctly whether
-the site is served from that prefix or from the root of a custom domain. Three
-things do hardcode the full URL and must be updated if a custom domain is
-attached:
+## Domain
 
-- `404.html` — Pages serves it for any missing path at any depth, so its links
-  have to be absolute. Change the `/goodstuffstudio/` prefixes to `/`.
-- `sitemap.xml` — the four `<loc>` values.
-- `robots.txt` — the `Sitemap:` line.
+The site URL appears in three places that are not derived from anything:
 
-To attach a custom domain, add a `CNAME` file containing the bare domain and
-point DNS at GitHub.
+- `sitemap.xml` — the four `<loc>` values
+- `robots.txt` — the `Sitemap:` line
+- Netlify site settings
+
+They currently assume `https://goodstuff.netlify.app`. Update all three
+together if the subdomain differs or a custom domain is attached.
 
 ## Local preview
 
@@ -45,13 +46,8 @@ point DNS at GitHub.
 python3 -m http.server 8000
 ```
 
-Then open <http://localhost:8000>. Relative paths mean you can also open the
-files directly over `file://` if you prefer.
-
-## Enabling GitHub Pages
-
-Repo **Settings → Pages → Build and deployment → Source: Deploy from a branch**,
-branch `main`, folder `/ (root)`.
+Then open <http://localhost:8000>. Use a server rather than opening files
+directly — the root-absolute paths will not resolve over `file://`.
 
 ## Editing the Lilt privacy policy
 
