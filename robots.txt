@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://goodstuffstudio.github.io/sitemap.xml
+Sitemap: https://goodstuffstudio.github.io/goodstuffstudio/sitemap.xml

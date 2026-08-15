@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- If a custom domain is attached, replace the goodstuffstudio.github.io/goodstuffstudio
+     prefix throughout this file (and the Sitemap line in robots.txt). -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://goodstuffstudio.github.io/</loc>
+    <loc>https://goodstuffstudio.github.io/goodstuffstudio/</loc>
     <lastmod>2026-08-15</lastmod>
   </url>
   <url>
-    <loc>https://goodstuffstudio.github.io/support/</loc>
+    <loc>https://goodstuffstudio.github.io/goodstuffstudio/support/</loc>
     <lastmod>2026-08-15</lastmod>
   </url>
   <url>
-    <loc>https://goodstuffstudio.github.io/privacy/</loc>
+    <loc>https://goodstuffstudio.github.io/goodstuffstudio/privacy/</loc>
     <lastmod>2026-08-15</lastmod>
   </url>
   <url>
-    <loc>https://goodstuffstudio.github.io/privacy/lilt/</loc>
+    <loc>https://goodstuffstudio.github.io/goodstuffstudio/privacy/lilt/</loc>
     <lastmod>2026-08-15</lastmod>
   </url>
 </urlset>

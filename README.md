@@ -1,42 +1,43 @@
-# goodstuffstudio.github.io
+# goodstuffstudio
 
 The site for **Goodstuff Studio**. Plain static HTML — no build step, no
 dependencies, no framework. Served by GitHub Pages from `main` at the repo root.
 
 ## Pages
 
-| Path             | File                     |
-| ---------------- | ------------------------ |
-| `/`              | `index.html`             |
-| `/privacy`       | `privacy/index.html`     |
-| `/privacy/lilt`  | `privacy/lilt/index.html`|
-| `/support`       | `support/index.html`     |
-| 404              | `404.html`               |
+| Path            | File                      |
+| --------------- | ------------------------- |
+| `/`             | `index.html`              |
+| `/privacy`      | `privacy/index.html`      |
+| `/privacy/lilt` | `privacy/lilt/index.html` |
+| `/support`      | `support/index.html`      |
+| 404             | `404.html`                |
 
 Shared styles live in `assets/styles.css`. `.nojekyll` tells Pages to serve
 files as-is instead of running them through Jekyll.
 
-## Before going live
+## Where this is served from
 
-The pages contain placeholder tokens that must be replaced:
+The repo is named `goodstuffstudio`, not `goodstuffstudio.github.io`, so
+GitHub Pages treats it as a **project site** and serves it under a path
+prefix:
 
-- `{{SUPPORT_EMAIL}}` — the studio's real support address.
-- `{{LILT_ONE_LINER}}` — one phrase describing what Lilt is.
-
-Replace them everywhere at once:
-
-```sh
-grep -rl '{{SUPPORT_EMAIL}}' . --exclude-dir=.git \
-  | xargs sed -i '' 's|{{SUPPORT_EMAIL}}|help@example.com|g'
+```
+https://goodstuffstudio.github.io/goodstuffstudio/privacy/lilt/
 ```
 
-Then delete the `.ph` spans wrapping them, and drop the `.ph` rule from
-`assets/styles.css`.
+All four content pages use **relative** links, so they work correctly whether
+the site is served from that prefix or from the root of a custom domain. Three
+things do hardcode the full URL and must be updated if a custom domain is
+attached:
 
-`privacy/lilt/index.html` opens with an HTML comment listing every factual
-claim to verify against what the app actually ships — the policy is written
-assuming Lilt is fully on-device with no analytics SDKs. Check it before
-publishing.
+- `404.html` — Pages serves it for any missing path at any depth, so its links
+  have to be absolute. Change the `/goodstuffstudio/` prefixes to `/`.
+- `sitemap.xml` — the four `<loc>` values.
+- `robots.txt` — the `Sitemap:` line.
+
+To attach a custom domain, add a `CNAME` file containing the bare domain and
+point DNS at GitHub.
 
 ## Local preview
 
@@ -44,13 +45,16 @@ publishing.
 python3 -m http.server 8000
 ```
 
-Then open <http://localhost:8000>. Use a server rather than opening the files
-directly — the pages reference `/assets/styles.css` by absolute path, which
-`file://` will not resolve.
+Then open <http://localhost:8000>. Relative paths mean you can also open the
+files directly over `file://` if you prefer.
 
 ## Enabling GitHub Pages
 
 Repo **Settings → Pages → Build and deployment → Source: Deploy from a branch**,
-branch `main`, folder `/ (root)`. The site then serves at
-<https://goodstuffstudio.github.io>. To use a custom domain later, add a `CNAME`
-file containing the bare domain and point DNS at GitHub.
+branch `main`, folder `/ (root)`.
+
+## Editing the Lilt privacy policy
+
+`privacy/lilt/index.html` is the policy linked from Lilt's App Store listing.
+Its wording is supplied by the studio — when it changes, update the
+`Last updated` date near the top of the page in the same commit.

@@ -304,17 +304,6 @@ th {
   min-width: 34rem;
 }
 
-/* Placeholder token — replace before publishing. */
-.ph {
-  font-family: var(--mono);
-  font-size: 0.9em;
-  background: var(--accent-soft);
-  color: var(--accent);
-  border: 1px dashed var(--accent);
-  border-radius: 5px;
-  padding: 0.05em 0.35em;
-}
-
 /* ---------- a11y ---------- */
 
 .skip {
